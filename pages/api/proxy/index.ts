@@ -4,8 +4,12 @@ import axios from 'axios';
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     try {
-      console.log('request.body', req.body)
-      const data = JSON.parse(req.body);
+      let data = req.body;
+      // Si data es una cadena, parsear a objeto
+      if (typeof data === 'string') {
+        data = JSON.parse(data);
+      } 
+
       const token = req.headers.authorization;  // Capturamos el token de autorización
       console.log('Token de autorización:', token);
       console.log('Datos a enviar:', data);
