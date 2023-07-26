@@ -34,7 +34,7 @@ export default async function handler(
       res.send(response.data);
     } catch (error) {
       console.error(error);
-      res.status(500).send("Error al procesar la solicitud");
+      res.status(500).send({msg:"Error al procesar la solicitud", error});
     }
   } else {
     // Manejo de otros métodos HTTP
