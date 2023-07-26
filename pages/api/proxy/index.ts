@@ -1,0 +1,29 @@
+import { NextApiRequest, NextApiResponse } from 'next';
+import axios from 'axios';
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  if (req.method === 'POST') {
+    try {
+      console.log('request.body', req.body)
+      const data = JSON.parse(req.body);
+      const token = req.headers.authorization;  // Capturamos el token de autorización
+      console.log('Token de autorización:', token);
+      console.log('Datos a enviar:', data);
+
+
+      const token_ripley = 'BASIC YmE5ZmVjNGNiZjMyOTg1OWJhNDNjOTY5OWVlYzc1MmI5M2UwMTk4ZTpkYjdkOWRhMGM1OTllNzJjOGYxMjdiNGM1MGY2NGVkZWJmZTlkNTI2'
+      const response = await axios.post('https://st-learninglocker.ftsdn.com/data/xAPI', data, {
+        headers: { 'Authorization': token_ripley }  // Adjuntamos el token a la solicitud saliente
+      });
+
+      res.send(response.data);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Error al procesar la solicitud');
+    }
+  } else {
+    // Manejo de otros métodos HTTP
+    res.setHeader('Allow', 'POST');
+    res.status(405).end(`Method ${req.method} Not Allowed`);
+  }
+}
