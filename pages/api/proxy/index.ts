@@ -17,7 +17,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       const token_ripley = 'BASIC YmE5ZmVjNGNiZjMyOTg1OWJhNDNjOTY5OWVlYzc1MmI5M2UwMTk4ZTpkYjdkOWRhMGM1OTllNzJjOGYxMjdiNGM1MGY2NGVkZWJmZTlkNTI2'
       const response = await axios.post('https://st-learninglocker.ftsdn.com/data/xAPI/statements', data, {
-        headers: { 'Authorization': token_ripley }  // Adjuntamos el token a la solicitud saliente
+        headers: { 'Authorization': token }  // Adjuntamos el token a la solicitud saliente
       });
 
       res.send(response.data);
