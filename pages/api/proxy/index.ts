@@ -11,12 +11,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       } 
 
       const token = req.headers.authorization;  // Capturamos el token de autorización
-      console.log('Token de autorización:', token);
-      console.log('Datos a enviar:', data);
+      console.warn('Token de autorización:', token);
+      console.warn('Datos a enviar:', data);
 
 
       const token_ripley = 'BASIC YmE5ZmVjNGNiZjMyOTg1OWJhNDNjOTY5OWVlYzc1MmI5M2UwMTk4ZTpkYjdkOWRhMGM1OTllNzJjOGYxMjdiNGM1MGY2NGVkZWJmZTlkNTI2'
-      const response = await axios.post('https://st-learninglocker.ftsdn.com/data/xAPI', data, {
+      const response = await axios.post('https://st-learninglocker.ftsdn.com/data/xAPI/statements', data, {
         headers: { 'Authorization': token_ripley }  // Adjuntamos el token a la solicitud saliente
       });
 
