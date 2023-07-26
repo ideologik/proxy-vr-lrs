@@ -18,8 +18,6 @@ export default async function handler(
       console.warn("Datos a enviar:", data);
       data = data.statement;
 
-      const token_ripley =
-        "BASIC YmE5ZmVjNGNiZjMyOTg1OWJhNDNjOTY5OWVlYzc1MmI5M2UwMTk4ZTpkYjdkOWRhMGM1OTllNzJjOGYxMjdiNGM1MGY2NGVkZWJmZTlkNTI2";
       const response = await axios.post(
         "https://st-learninglocker.ftsdn.com/data/xAPI/statements",
         data,
